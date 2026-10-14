@@ -1,6 +1,0 @@
-{
-  "sha256": "7c49f4e652235d819bc05dcc3da6b76c4eeaa5248a97ea3f0518117d06f209ce",
-  "bytes": 14290386,
-  "file_hashes_verified": 198,
-  "scope": "raw npz probability caches and redundant best.pt binaries; all selected model tensors verified equal to canonical warm checkpoint already retained locally and in release bundle"
-}
