@@ -1,0 +1,98 @@
+{
+  "metric": "image_macro_gt_present_iou",
+  "parent_protocol_sha256": "177000bb2dcb9150f797bd93b223986f8438dbd3dce1b7bb293accfe979fa12e",
+  "data_sha256": "f4a12c7975e7cbeb4f4d9fff92e2f4c2f1578ffc76e0500656f16d88be053cc1",
+  "model_names": [
+    "native64_d4",
+    "canonical1440_native32",
+    "mit_no_tta",
+    "dino",
+    "native64_whole",
+    "mit_d4",
+    "native_halo448_single",
+    "native_halo448_d4",
+    "native_halo448_consistency_single",
+    "native_halo448_consistency_d4",
+    "native_halo640_single",
+    "native_halo640_d4",
+    "reference_r101_bf16_single",
+    "reference_r101_bf16_d4",
+    "reference_r101_bf16_seed43_single",
+    "reference_r101_bf16_seed43_d4",
+    "native_whole_r022_single",
+    "native_whole_r022_d4",
+    "native_semantic_control_ctx672_single",
+    "native_semantic_control_ctx672_d4",
+    "native_semantic_control_ctx896_single",
+    "native_semantic_control_ctx896_d4",
+    "native_semantic_dino_single",
+    "native_semantic_dino_d4",
+    "native_semantic_dino_ctx672_single",
+    "native_semantic_dino_ctx672_d4",
+    "native_semantic_dino_ctx896_single",
+    "native_semantic_dino_ctx896_d4",
+    "native_whole_semantic_single",
+    "native_whole_semantic_d4",
+    "canonical64_finetune_single",
+    "canonical64_finetune_d4",
+    "native_whole_semantic_base_single",
+    "native_whole_semantic_base_d4",
+    "native_whole_semantic_scale090_single",
+    "native_whole_semantic_scale090_d4",
+    "native_whole_semantic_scale110_single",
+    "native_whole_semantic_scale110_d4",
+    "native128_dense_single",
+    "native128_dense_d4",
+    "native128_whole_single",
+    "native128_whole_d4",
+    "native_whole_semantic_multilevel_single",
+    "native_whole_semantic_multilevel_d4"
+  ],
+  "heldout_folds": [
+    [
+      1,
+      2,
+      11,
+      15
+    ],
+    [
+      3,
+      5,
+      14,
+      19
+    ],
+    [
+      0,
+      4,
+      9,
+      12
+    ],
+    [
+      6,
+      8,
+      10,
+      18
+    ],
+    [
+      7,
+      13,
+      16,
+      17
+    ]
+  ],
+  "source_sha256": "c16d9d5bd91d25156163b63c16d39ea9015bf2770dcb96f42439932ca24e00ce",
+  "metric_source_sha256": "21b44faae0b51e948d7cc3445444563af06cd65713301155ada29d7a4e4a6706",
+  "steps": [
+    0.2,
+    0.1,
+    0.05,
+    0.02,
+    0.01,
+    0.005,
+    0.002
+  ],
+  "max_sweeps": 3,
+  "warning": "Development and ensemble-stage group cross-fit only; checkpoints/candidate selection already reused valid20.",
+  "test_used": false,
+  "full_pixel_verification_required": true
+}

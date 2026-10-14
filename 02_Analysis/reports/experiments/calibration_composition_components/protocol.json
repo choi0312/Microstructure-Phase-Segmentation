@@ -1,0 +1,16 @@
+{
+  "parent": "runs/oct09_official/calibration_composition",
+  "grid": [
+    0,
+    4,
+    16,
+    64,
+    128,
+    256
+  ],
+  "metric": "image_macro_gt_present_iou",
+  "test_used": false,
+  "warning": "Calibration-stage group cross-fit only; base checkpoints and candidate selection reused valid20.",
+  "border_touching_components_preserved": true,
+  "replacement": "highest calibrated non-Primary class"
+}

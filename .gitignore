@@ -1,0 +1,16 @@
+.DS_Store
+__MACOSX/
+._*
+__pycache__/
+*.py[cod]
+.env
+.env.*
+*.pem
+*.key
+02_Analysis/model_bundle/
+/A901005*.zip
+/A901005*.zip.sha256
+/WEIGHTS_*.csv
+/WEIGHTS_*.json
+/WEIGHTS_README.txt
+/data/

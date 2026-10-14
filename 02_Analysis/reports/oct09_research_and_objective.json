@@ -1,0 +1,93 @@
+{
+  "date": "2026-10-09",
+  "task": "four mutually exclusive native-resolution material phases; image-macro GT-present IoU",
+  "sources": [
+    {
+      "title": "HuBMAP+HPA 2022 third-place authors code",
+      "url": "https://github.com/VSydorskyy/hubmap_2022_htt_solution",
+      "commit": "5fa1f53667cb91c7a6f0d918e5c46fc6dd668800",
+      "inspected": [
+        "code_base/inference/inference_class.py: per-organ thresholds, relative minimum component area, weighted models",
+        "train_configs/unet_no_pseudo.py: Jaccard/CE-like/Dice/Focal losses, PointRend, SWA"
+      ],
+      "adaptation": "Class thresholds become offsets of a four-class probability argmax. Prediction-derived phase ratios replace organ metadata, which KoMaP does not provide. Retain native masks and protect boundary-touching Primary components.",
+      "implemented": [
+        "calibrate.py",
+        "calibrate_context.py",
+        "components.py"
+      ],
+      "license": "No license file listed in inspected repository tree; source samples are read-only research references, not redistributed in release implementation."
+    },
+    {
+      "title": "HuBMAP+HPA 2022 seventh-place author writeup",
+      "url": "https://www.kaggle.com/competitions/hubmap-organ-segmentation/writeups/q-takka-7th-place-solution",
+      "observations": "Mixed whole images and tiles, random crop probability .5; D4 and model aggregation.",
+      "adaptation": "Prospective full-native / crop512 mixture with uniform image sampling, mild grayscale-only augmentation and optional class-balanced crop centers. Avoid histology-specific color shifts and resizing thin Eutectic Si.",
+      "implemented": [
+        "train_aligned.py --mode mixed"
+      ]
+    },
+    {
+      "title": "HuBMAP+HPA 2022 first-place author writeup",
+      "url": "https://www.kaggle.com/competitions/hubmap-organ-segmentation/writeups/i-need-segformer-1st-place-solution",
+      "observations": "Whole-image SegFormer ensemble, CE/Lovasz, per-organ thresholds.",
+      "adaptation": "Use overlap-oriented loss plus CE, native whole-image supervision; validate exact KoMaP IoU instead of importing Dice thresholds."
+    },
+    {
+      "title": "Semi-Supervised Segmentation of Functional Tissue Units at the Cellular Level",
+      "url": "https://arxiv.org/abs/2305.02148",
+      "observations": "Primary paper associated with third-place solution; segmentation under domain shift and imbalance.",
+      "adaptation": "No external histology labels or test pseudo-labels introduced; domain mismatch means results cannot be assumed transferable."
+    },
+    {
+      "title": "Severstal Steel Defect Detection, 31st-place authors code",
+      "url": "https://github.com/Diyago/Severstal-Steel-Defect-Detection",
+      "commit": "346a00e6d832043503be96d0b3ccf2141dd46f8c",
+      "inspected": "inference.py: per-class thresholds, min-area suppression, multiple encoders and TTA aggregation",
+      "source_sha256": "ff28b443932798ba4c05cd6a242042d308f55f953c54bf4353463621c72e76ad",
+      "adaptation": "Confirms class-dependent decision calibration as a competition strategy. In KoMaP retain exclusive four-class argmax and reassign removed Primary pixels; do not copy independent binary masks or defect-absence Dice rewards. No arbitrary area suppression of thin Eutectic Si.",
+      "implementation": "Existing ensemble and class-calibration ablations; source inspected read-only, not executed or redistributed."
+    },
+    {
+      "title": "Long-tail learning via logit adjustment",
+      "url": "https://arxiv.org/abs/2007.07314",
+      "adaptation": "Additive class-score adjustment is related; our bounded prediction-composition regression is an empirical extension optimized for KoMaP hard IoU, not the paper's prior-frequency rule or a theoretical guarantee."
+    },
+    {
+      "title": "The Lovasz-Softmax loss",
+      "url": "https://arxiv.org/abs/1705.08790",
+      "adaptation": "Supports distinction between image-wise and dataset-wise IoU optimization. Existing matched R022 control includes per-image present-class Lovasz; new candidate uses explicit GT-present soft-IoU plus CE, which is not claimed to be Lovasz."
+    }
+  ],
+  "operator_metric": {
+    "evidence": "User-supplied organizer clarification",
+    "present_rule": "S_i={c: ground_truth_count_i,c>0}; excluded even when prediction contains c",
+    "score": "mean_i [ sum_{c in S_i} TP_ic/(TP_ic+FP_ic+FN_ic) / |S_i| ]",
+    "pixel_errors": "Pixels wrongly assigned to GT-absent classes still count as FN for their true class."
+  },
+  "training_objective": {
+    "formula": "L = .8 * mean_i[1 - mean_{c in S_i}(sum_p y_icp p_icp / (sum_p y_icp + sum_p p_icp - sum_p y_icp p_icp))] + .2 * mean_i mean_p CE(y_ip,p_ip)",
+    "coefficients": "Experimental choice; not official requirements. Matched R022 control retained.",
+    "full_image_vs_patch": "Metric alignment exact in presence/averaging for full image surrogate. Patch steps are a separate surrogate and ablated."
+  },
+  "ensemble_objective": {
+    "probability": "q_icp=sum_m w_m p_micp, w>=0,sum(w)=1",
+    "prediction": "argmax_c [log(q_icp)+b_c(f(q_i))], b_Al=0",
+    "fit": "maximize exact official hard IoU on fit images; each heldout group excluded from fitting weights/calibration/component thresholds",
+    "conditional_features": "Predicted phase composition and optionally prediction entropy only. No filename, GT presence, test label, or manual mask editing at inference."
+  },
+  "limitations": [
+    "Only provided valid20; repeatedly used for checkpoint/candidate/model selection. Group crossfit diagnoses current fitting stage only; not independent nested CV.",
+    "Research-inspired extension, not a claim of worldwide novelty.",
+    "Kaggle Dice/leaderboard numbers are not comparable to KoMaP mIoU.",
+    "No test images used by Oct09 search/training."
+  ],
+  "reference_sample_hashes": {
+    "train_configs/unet_no_pseudo.py": "980c148fea8c4faffb87184c7d5b6e00c0ec15e107bf6f45789bb8d038a4cb4c",
+    "code_base/datasets/seg_dataset.py": "f55de2bb0eae4ef799d8656f27fa3e00ac882054e1268fe6437794f368c2d381",
+    "code_base/utils/metrics.py": "3628b850ed3cccd6e20c8e02bb8dcc12cc333f48699e3cb5856615e1b4dd6e35",
+    "code_base/transforms/crop.py": "b65d43b6061ea0159f696fbc1a5efe24f31f02bb8263dfc7e2234873f3785865",
+    "code_base/forwards/seg_forward.py": "8a5737823b59635d175f98f427cf62b894334545c30099898c1536ebf743b0b5",
+    "code_base/inference/inference_class.py": "8cf7b8d0ac9197ac6b2f53589ae06d97c6e61eec3488e138ad63ef8d79239b63"
+  }
+}

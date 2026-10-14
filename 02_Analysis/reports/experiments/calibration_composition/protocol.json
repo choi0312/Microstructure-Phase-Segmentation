@@ -1,0 +1,46 @@
+{
+  "kind": "composition",
+  "metric": "image_macro_gt_present_iou",
+  "bounds": [
+    [
+      -0.5,
+      0.5
+    ],
+    [
+      -0.35,
+      0.35
+    ],
+    [
+      -0.35,
+      0.35
+    ],
+    [
+      -0.5,
+      0.5
+    ],
+    [
+      -0.35,
+      0.35
+    ],
+    [
+      -0.35,
+      0.35
+    ],
+    [
+      -0.5,
+      0.5
+    ],
+    [
+      -0.35,
+      0.35
+    ],
+    [
+      -0.35,
+      0.35
+    ]
+  ],
+  "optimizer": "DE vectorized, seed20261009, popsize8, maxiter50, zero start; exact full-pixel final verification",
+  "features": "constant, predicted Ni/(Ni+Eut) signed ratio, clipped log predicted Primary fraction",
+  "test_used": false,
+  "warning": "Calibration-stage group cross-fit only; base checkpoints and candidate selection reused valid20."
+}

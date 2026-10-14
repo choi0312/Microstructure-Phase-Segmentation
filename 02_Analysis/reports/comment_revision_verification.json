@@ -1,0 +1,63 @@
+{
+  "comment_only_modules": [
+    {
+      "path": "code/inference/predict.py",
+      "original_sha256": "e84aa802aee5e6143f170ccafc91309d367a49079d6761dbd64f76b2d979fee0",
+      "commented_sha256": "f5f93f4c25ec08550554565fbadfe2d2b0e7e2ef86faccfb6ff35506790e2b0b",
+      "executable_ast_identical": true
+    },
+    {
+      "path": "code/inference/postprocess.py",
+      "original_sha256": "8b319a1814ad09fbbaad482e5a81521e3155fc7216addd83897373169304082e",
+      "commented_sha256": "611f24643248093d4a751591b77d6e4b044476101b5612522dc3dbdfb0db63bb",
+      "executable_ast_identical": true
+    },
+    {
+      "path": "code/inference/worker_new.py",
+      "original_sha256": "fb9b26a6380335b149dddcd48b3edad82ae3e33468b9cd9eccbf8fd4be8bef04",
+      "commented_sha256": "4e150ad0ff3fc64e44a9c757547441f2c0c390340da2ad155c5c45f35239644a",
+      "executable_ast_identical": true
+    },
+    {
+      "path": "code/evaluate.py",
+      "original_sha256": "daa84459dd8c06bb0e3900d24acae9170049c65e3e2d210aa5aeeb813e8bccde",
+      "commented_sha256": "a7c8e85a704cd3ba8d1dbf9e91819acd9fbbb52909df51d01f8168266294f9ad",
+      "executable_ast_identical": true
+    },
+    {
+      "path": "code/experiments/oct09_official/official_metric.py",
+      "original_sha256": "21b44faae0b51e948d7cc3445444563af06cd65713301155ada29d7a4e4a6706",
+      "commented_sha256": "2717208a0cf23e1243606010d5ca50cfeb0267a2d9fccbe08d74868086581a6e",
+      "executable_ast_identical": true
+    },
+    {
+      "path": "code/src/native_unet.py",
+      "original_sha256": "23c87805a72127004e0b8bdae98ddb700d66f3d11d677e840d69661f178f9323",
+      "commented_sha256": "cb1f44e5825e94dba3ff015a99f74450e0b4dbe536ddeac4fa2f6d5feaee79ab",
+      "executable_ast_identical": true
+    },
+    {
+      "path": "code/experiments/oct04_context/train_whole_semantic_base.py",
+      "original_sha256": "1c74e19a74c5aa8f698f1d73ed8edc4ddf6c03e0e9c58aa29d3bcccb0905a2f5",
+      "commented_sha256": "046cc77023632b9e720f3c5e030d4d4b8f0b039b75f887c4d0bcb25060a0ff72",
+      "executable_ast_identical": true
+    },
+    {
+      "path": "code/experiments/oct09_official/calibrate_context.py",
+      "original_sha256": "93e53c3540dec6bdb36c48d4bce62c57f66888b176a835e8bc641fcbd5d6cc9a",
+      "commented_sha256": "18c9cbfbfd470aa96c683eb192dc3a75cd82706024aba5414795c6000890829b",
+      "executable_ast_identical": true
+    },
+    {
+      "path": "code/experiments/oct09_official/components_context.py",
+      "original_sha256": "39cf722f19dd65d9ce823a1685a4afd2cf59932be8355717efaa927738132ae0",
+      "commented_sha256": "67965168f566b2f5c1cea8619aab716cf2be113f618352c6c04116541897fa47",
+      "executable_ast_identical": true
+    }
+  ],
+  "weights_changed": false,
+  "inference_configuration_changed": false,
+  "manifest_change": "runtime_source_sha256 only; FILES manifest hash refreshed",
+  "previous_manifest_sha256": "d5239664f73429f8a3b563d7c147704d1fa801dc6316ef91ebdd12d794dfd5fe",
+  "current_manifest_sha256": "1febc8a05fa694dd2ad7b872af07e569598fa5d679e01ac3098e0c841db55076"
+}
